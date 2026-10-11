@@ -1,0 +1,1 @@
+const r=require('express').Router(),c=require('../controllers/contactController');r.get('/:id',c.getContact).post('/',c.createContact).put('/:id',c.updateContact).delete('/:id',c.deleteContact);module.exports=r;

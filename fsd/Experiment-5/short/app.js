@@ -1,0 +1,1 @@
+require('dotenv').config();const express=require('express'),connectDB=require('./config/dbConnection'),routes=require('./routes/contactRoutes'),app=express();connectDB();app.use(express.json());app.use('/api/contacts',routes);app.listen(5000,()=>console.log('SERVER IS RUNNING AT PORT 5000'));

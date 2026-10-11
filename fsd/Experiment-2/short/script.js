@@ -1,0 +1,1 @@
+async function getWeather(){let city=document.getElementById('city').value.toLowerCase(),data=await(await fetch('weather.json')).json(),w=data.find(x=>x.city.toLowerCase()===city);document.getElementById('result').innerHTML=w?`${w.city}<br>${w.temperature}°C<br>${w.condition}`:'City not found'}

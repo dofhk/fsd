@@ -1,0 +1,5 @@
+const Contact=require('../model/contactModel');
+exports.getContact=async(req,res)=>{try{let x=await Contact.findById(req.params.id);return x?res.json(x):res.status(404).json({message:'Contact not found'})}catch(e){res.status(500).json({message:e.message})}};
+exports.createContact=async(req,res)=>{try{let{name,email,phone}=req.body;if(!name||!email||!phone)return res.status(400).json({message:'All fields are required'});await Contact.create({name,email,phone});res.status(201).json({message:'A new contact is created'})}catch(e){res.status(500).json({message:e.message})}};
+exports.updateContact=async(req,res)=>{try{let x=await Contact.findByIdAndUpdate(req.params.id,req.body,{new:true});return x?res.json(x):res.status(404).json({message:'Contact not found'})}catch(e){res.status(500).json({message:e.message})}};
+exports.deleteContact=async(req,res)=>{try{let x=await Contact.findByIdAndDelete(req.params.id);return x?res.json(x):res.status(404).json({message:'Contact not found'})}catch(e){res.status(500).json({message:e.message})}};

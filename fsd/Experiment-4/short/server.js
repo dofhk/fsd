@@ -1,0 +1,2 @@
+const http=require('http'),products=[{id:1,name:'Laptop',price:1200},{id:2,name:'Mouse',price:25},{id:3,name:'Keyboard',price:75}];
+http.createServer((req,res)=>{res.setHeader('Content-Type','application/json');let ok=req.url==='/api/products';res.writeHead(ok?200:404);res.end(JSON.stringify(ok?products:{message:'Resource not found'}))}).listen(3000,'localhost',()=>console.log('Server is running on http://localhost:3000'));

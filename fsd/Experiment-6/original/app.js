@@ -1,0 +1,10 @@
+const express = require('express');
+const dotenv = require('dotenv').config();
+const connectDB = require('./config/dbConnect');
+const tasksRoutes = require('./routes/taskRoutes');
+connectDB();
+const app = express();
+app.use(express.json());
+app.use("/api/tasks",tasksRoutes);
+app.use((req, res) => { res.status(404).json({ message: 'Route not found' }); });
+app.listen(3000,()=>{ console.log("server is running at port 3000"); });

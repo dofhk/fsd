@@ -1,0 +1,1 @@
+require('dotenv').config();const express=require('express'),connect=require('./config/dbConnect'),routes=require('./routes/taskRoutes'),app=express();connect();app.use(express.json());app.use('/api/tasks',routes);app.use((req,res)=>res.status(404).json({message:'Route not found'}));app.listen(3000,()=>console.log('server is running at port 3000'));
